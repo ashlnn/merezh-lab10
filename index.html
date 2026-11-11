@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Практична робота 10 — Кошик покупця</title>
+</head>
+<body>
+  <header>
+    <h1>Деталі кошика замовлень</h1>
+  </header>
+
+  <main>
+    <section class="controls">
+      <label for="cartInput">ID кошика:</label>
+      <input type="number" id="cartInput" value="1" min="1" placeholder="Введіть ID">
+      
+      <!-- Вибір режиму запиту (успіх або вибір помилки 404 / 503) -->
+      <div style="margin: 10px 0;">
+        <label>Режим запиту:</label><br>
+        <input type="radio" id="modeSuccess" name="requestMode" value="success" checked>
+        <label for="modeSuccess">Успішний запит (кошик)</label><br>
+        <input type="radio" id="modeError404" name="requestMode" value="404">
+        <label for="modeError404">Помилка 404 (Не знайдено)</label><br>
+        <input type="radio" id="modeError503" name="requestMode" value="503">
+        <label for="modeError503">Помилка 503 (Сервер недоступний)</label><br><br>
+        
+        <!-- Чекбокс для тестового режиму повторної спроби -->
+        <input type="checkbox" id="testRetryMode">
+        <label for="testRetryMode">Тестовий режим (штучна помилка на 1-й спробі)</label>
+      </div>
+
+      <button type="button" id="fetchCartBtn">Завантажити кошик</button>
+    </section>
+
+    <!-- Область стану запиту -->
+    <section>
+      <p id="requestStatus">Очікування дій користувача: введіть ID та натисніть кнопку.</p>
+    </section>
+
+    <!-- Область повідомлень про помилки -->
+    <section>
+      <div id="errorMessage" style="color: darkred; font-weight: bold;"></div>
+    </section>
+
+    <!-- Блок відображення даних кошика -->
+    <section id="cartDetails" class="cart-container"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
